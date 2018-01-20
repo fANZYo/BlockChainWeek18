@@ -3,10 +3,24 @@ import Bank from '../build/contracts/Bank.json'
 import getWeb3 from './utils/getWeb3'
 import AppBar from 'material-ui/AppBar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-// import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
+
+const style = {
+  height: 250,
+  width: 250,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+  verticalAlign: 'top',
+  paddingTop: '20',
+};
+
+const buttonStyle = {
+  width: 250,
+  height: 250,
+  margin: 20,
+}
 
 class App extends Component {
   constructor(props) {
@@ -68,37 +82,21 @@ class App extends Component {
   
 
   render() {
-    const style = {
-      height: 250,
-      width: 250,
-      margin: 20,
-      textAlign: 'center',
-      display: 'inline-block',
-      verticalAlign: 'top',
-      paddingTop: '20',
-    };
 
-    const buttonStyle = {}
     return (
         <MuiThemeProvider>
           <div>
             <AppBar title="Status: Access Allowed / Denied" />
             <div>
               <div>
-                <Paper style={style} zDepth={1}>
-                <div className="total">950.00 Kina</div>
-                </Paper>
-                <RaisedButton label="Deposit" primary={true} />
-                
+                  <Paper style={style} zDepth={1}>
+                    <div className="total">950.00 Kina</div>
+                  </Paper>
+                  <RaisedButton label="Deposit" primary={true} style={buttonStyle} />
                 </div>
                 <div>
-                <Paper style={style} zDepth={1}>
-                  <RaisedButton label="Payment Transfer" primary={true} />
-                </Paper>
-                <Paper style={style} zDepth={1}>
-                  <RaisedButton label="Withdraw" primary={true} />
-                </Paper>
-                
+                  <RaisedButton label="Payment Transfer" primary={true} style={buttonStyle} />
+                  <RaisedButton label="Withdraw" primary={true} style={buttonStyle} />
                 </div>
             </div>
             <div className="right-side"></div>

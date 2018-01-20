@@ -19,3 +19,6 @@ yarn-error.log*
 
 # ganache
 /ganache
+
+# build_webpack
+/build_webpack
