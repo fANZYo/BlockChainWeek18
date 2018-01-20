@@ -75,22 +75,29 @@ class App extends Component {
       textAlign: 'center',
       display: 'inline-block',
       verticalAlign: 'top',
+      paddingTop: '20',
     };
+
+    const buttonStyle = {}
     return (
         <MuiThemeProvider>
           <div>
-            <AppBar title="Access Allow" />
+            <AppBar title="Status: Access Allowed / Denied" />
             <div>
               <div>
                 <Paper style={style} zDepth={1}>
-                  <RaisedButton label="Primary" primary={true} />
+                <div className="total">950.00 Kina</div>
                 </Paper>
-                <Paper style={style} zDepth={1}/>
+                <RaisedButton label="Deposit" primary={true} />
                 
                 </div>
                 <div>
-                <Paper style={style} zDepth={1}/>
-                <Paper style={style} zDepth={1}/>
+                <Paper style={style} zDepth={1}>
+                  <RaisedButton label="Payment Transfer" primary={true} />
+                </Paper>
+                <Paper style={style} zDepth={1}>
+                  <RaisedButton label="Withdraw" primary={true} />
+                </Paper>
                 
                 </div>
             </div>
