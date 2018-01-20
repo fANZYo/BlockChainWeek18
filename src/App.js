@@ -5,6 +5,16 @@ import AppBar from 'material-ui/AppBar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import Paper from 'material-ui/Paper'
+
+const style = {
+  height: 100,
+  width: 100,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+};
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -84,11 +94,23 @@ class App extends Component {
     //   </div>
     // );
     return (
-      <div className="App">
-        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-          <AppBar title="Access Allow" />
-        </MuiThemeProvider>
-      </div>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <AppBar title="Access Allow" />
+        <div>
+          <div>
+            <div>
+              <Paper style={style} zDepth={1} />
+              <Paper style={style} zDepth={1} />
+            </div>
+            <div>
+              <Paper style={style} zDepth={1} />
+              <Paper style={style} zDepth={1} />
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
