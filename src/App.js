@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Bank from '../build/contracts/Bank.json'
+import BankContract from '../build/contracts/Bank.json'
 import getWeb3 from './utils/getWeb3'
 
 class App extends Component {
@@ -39,7 +39,7 @@ class App extends Component {
      */
 
     const contract = require('truffle-contract')
-    const bank = contract(Bank)
+    const bank = contract(BankContract)
     bank.setProvider(this.state.web3.currentProvider)
 
     // Declaring this for later so we can chain functions on SimpleStorage.
@@ -47,7 +47,9 @@ class App extends Component {
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
+		console.log(accounts);
       bank.deployed().then((instance) => {
+		  console.log(instance);
         bankInstance = instance
 
         // Stores a given value, 5 by default.
