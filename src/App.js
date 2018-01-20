@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Bank from '../build/contracts/Bank.json'
 import getWeb3 from './utils/getWeb3'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import AppBar from 'material-ui/AppBar'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class App extends Component {
   constructor(props) {
@@ -61,14 +66,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+    <AppBar title="My AppBar" />
+  </MuiThemeProvider>
+      // <div className="App">
+      // <RaisedButtonExampleSimple />
+        /* <nav className="navbar pure-menu pure-menu-horizontal">
             <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
         </nav>
 
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
+            {this.state.showDialog && 
+              <dialog/>
+            }
               <h1>Good to Go!</h1>
               <p>Your Truffle Box is installed and ready.</p>
               <h2>Smart Contract Example</h2>
@@ -77,10 +89,26 @@ class App extends Component {
               <p>The stored value is: {this.state.storageValue}</p>
             </div>
           </div>
-        </main>
-      </div>
+        </main> */
+      /* </div> */
     );
   }
 }
+
+const style = {
+  margin: 12,
+};
+
+const RaisedButtonExampleSimple = () => (
+  <div>
+    <RaisedButton label="Default" style={style} />
+    <RaisedButton label="Primary" primary={true} style={style} />
+    <RaisedButton label="Secondary" secondary={true} style={style} />
+    <RaisedButton label="Disabled" disabled={true} style={style} />
+    <br />
+    <br />
+    <RaisedButton label="Full width" fullWidth={true} />
+  </div>
+);
 
 export default App
