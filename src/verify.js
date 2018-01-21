@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import '../scripts/capture'
 
@@ -15,28 +14,26 @@ class Verify extends Component {
 	}
 	
 	displayMainSpace() {
-		// if(this.state.CanTakePicture) {
-		// 	return (
-		// 		<video id="video">Video stream not available.</video>
-		// 	);
-		// } else {
-		// 	return (
-		// 		<img id="photo" />
-		// 	);
-		// }
-			return (
-				<div>
-				<video id="video">Video stream not available.</video>
-				<canvas id="canvas">
-  				</canvas>
-				</div>
-			);
+		return (
+			<div>
+			<video 
+				id="video"
+			>
+				Video stream not available.
+			</video>
+			<canvas 
+				id="canvas"
+			>
+				</canvas>
+			</div>
+		);
 	}
 
 	displayButton() {
 		if (this.state.CanTakePicture) {
 			return (
 				<RaisedButton
+				  id="startbutton"
 				  onClick={() => {
 			      	this.setState({
 						CanTakePicture: false
@@ -51,6 +48,7 @@ class Verify extends Component {
 		} else {
 			return (
 				<RaisedButton
+				  id="retakebutton"
 			      onClick={() => {
 			      	this.setState({
 						CanTakePicture: true
