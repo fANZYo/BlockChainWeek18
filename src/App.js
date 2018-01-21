@@ -11,7 +11,8 @@ import Paper from 'material-ui/Paper'
 import Dialog from 'material-ui/Dialog'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui/TextField'
+import FontIcon from 'material-ui/FontIcon'
 
 class App extends Component {
 	constructor(props) {
@@ -22,7 +23,8 @@ class App extends Component {
 			web3: null,
 			bank: null,
 			showTransferDialog: false,
-			transferWhoValue: 0,
+      transferWhoValue: 0,
+      showDepositDialog: false,
 		}
 	}
 
@@ -92,7 +94,15 @@ class App extends Component {
 
 	handleWhoChange = (event, index, value) => {
 		this.setState({transferWhoValue: value})
-	};
+  };
+  
+  handleDeposit = () => {
+    this.setState({showDepositDialog: true});
+  };
+
+  handleCloseDeposit = () => {
+    this.setState({showDepositDialog: false});
+  };
 
 	render() {
 		const style = {
@@ -134,7 +144,34 @@ class App extends Component {
 							<Paper style={style} zDepth={1}>
 								<p className="total">950.00 Kina</p>
 							</Paper>
-							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#673AB7" labelColor="#FFF"  />
+							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#673AB7" labelColor="#FFF" onClick={this.handleDeposit} />
+              <Dialog
+                className="deposit-dialog"
+								title="Deposit Funds"
+								modal={false}
+								open={this.state.showDepositDialog}
+								onRequestClose={this.handleCloseDeposit}
+								actions={actions}
+							>
+                <div className="half-left">
+                  <div>
+                    <FontIcon className="material-icons">monetization_on</FontIcon>
+                  </div>
+                  <RaisedButton
+                    label="Deposit Cash"
+                    secondary={true}
+                  />
+                </div>
+                <div className="half-right">
+                  <div>
+                    <FontIcon className="material-icons">settings_input_component</FontIcon>
+                  </div>
+                  <RaisedButton
+                    label="Deposit Charge"
+                    secondary={true}
+                  />
+                </div>
+							</Dialog>
 						</div>
 						<div>
 							<RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#E91E63" labelColor="#fff" onClick={this.handleTransfer} />
