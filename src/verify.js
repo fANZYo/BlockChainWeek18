@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
+import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 import '../scripts/capture'
 
 
@@ -15,28 +15,26 @@ class Verify extends Component {
 	}
 	
 	displayMainSpace() {
-		// if(this.state.CanTakePicture) {
-		// 	return (
-		// 		<video id="video">Video stream not available.</video>
-		// 	);
-		// } else {
-		// 	return (
-		// 		<img id="photo" />
-		// 	);
-		// }
-			return (
-				<div>
-				<video id="video">Video stream not available.</video>
-				<canvas id="canvas">
-  				</canvas>
-				</div>
-			);
+		return (
+			<div>
+			<video 
+				id="video"
+			>
+				Video stream not available.
+			</video>
+			<canvas 
+				id="canvas"
+			>
+				</canvas>
+			</div>
+		);
 	}
 
 	displayButton() {
 		if (this.state.CanTakePicture) {
 			return (
 				<RaisedButton
+				  id="startbutton"
 				  onClick={() => {
 			      	this.setState({
 						CanTakePicture: false
@@ -51,6 +49,7 @@ class Verify extends Component {
 		} else {
 			return (
 				<RaisedButton
+				  id="retakebutton"
 			      onClick={() => {
 			      	this.setState({
 						CanTakePicture: true
@@ -68,8 +67,18 @@ class Verify extends Component {
 	render() {
 		return (
 			<div>
-				{this.displayMainSpace()}
-				{this.displayButton()}
+				<div>
+					{this.displayMainSpace()}
+					{this.displayButton()}
+				</div>
+				<div>
+					<FontIcon 
+						className="material-icons"
+						style={{fontSize: 100}}
+						color={red500}
+      					hoverColor={greenA200}
+					>fingerprint</FontIcon>
+				</div>
 			</div>
 		);
 	}
