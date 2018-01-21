@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import BankContract from '../build/contracts/Bank.json'
 import getWeb3 from './utils/getWeb3'
 
+// Components
+import Verify from './verify';
+
 // Material ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
@@ -149,8 +152,8 @@ class App extends Component {
 		return (
 			<MuiThemeProvider>
 				<div>
-					<AppBar title="Status: Access Allowed / Denied" />
-					<div>
+					<AppBar title="" />
+					<div className="half-left">
 						<div>
 							<Paper style={style} zDepth={1}>
 								<p className="total">{this.state.balance/10000} Ether</p>
@@ -208,7 +211,7 @@ class App extends Component {
 							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#009688" labelColor="#FFFFFF" />
 						</div>
 					</div>
-					<div className="right-side"></div>
+					<div className="half-right right-side"><Verify /></div>
 				</div>
 			</MuiThemeProvider>
 		);
