@@ -5,7 +5,6 @@ import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 import '../scripts/capture'
 
-
 class Verify extends Component {
 	
 	componentWillMount() {

@@ -4,7 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import TextField from 'material-ui/TextField';
 import '../scripts/capture'
-
+// Styles
+import './index.css'
 
 class Transfer extends Component {
 	
@@ -81,8 +82,8 @@ class Transfer extends Component {
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
 				    />
 				</div>
-				<div >
-					<h2>Digital Signature:</h2>
+				<div style={{display:'inline-block'}}>
+					<h2>Digital Signature: </h2>
 					{this.displayTransfer()}
 				</div>
 			</div>
