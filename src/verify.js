@@ -2,16 +2,27 @@ import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 import '../scripts/capture'
 
 class Verify extends Component {
 	
 	componentWillMount() {
 		this.state = {
-			CanTakePicture: true
+			CanTakePicture: true,
+			showDepositDialog: false,
 		};
 	}
-	
+
+	handleDeposit() {
+		this.setState({showDepositDialog: true});
+	}
+
+	handleCloseDeposit() {
+		this.setState({showDepositDialog: false});
+	}
+
 	displayMainSpace() {
 		return (
 			<div>
@@ -63,8 +74,23 @@ class Verify extends Component {
 	}
 
 	render() {
+		const actionsDeposit = [
+			<FlatButton
+				label="Close"
+				primary={true}
+				onClick={() => this.handleCloseDeposit()}
+			/>
+		];
 		return (
 			<div>
+				<Dialog
+					className="deposit-dialog"
+					title="Verify Successful"
+					modal={false}
+					open={this.state.showDepositDialog}
+					onRequestClose={() => this.handleCloseDeposit()}
+					actions={actionsDeposit}
+				/>
 				<div style={{marginBottom: '5em'}}>
 					{this.displayMainSpace()}
 					{this.displayButton()}
@@ -75,6 +101,7 @@ class Verify extends Component {
 						style={{fontSize: 100}}
 						color={red500}
       					hoverColor={greenA200}
+      					onClick={() => this.handleDeposit()}
 					>fingerprint</FontIcon>
 				</div>
 			</div>
