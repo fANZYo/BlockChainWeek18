@@ -24,9 +24,10 @@ class Transfer extends Component {
 		if(this.state.hasVerify) {
 			return (
 				<RaisedButton
+				  backgroundColor="#a4c639"
 				  target="_blank"
 			      label="Verify"
-			      secondary={true}
+			      primary={true}
 			      icon={<FontIcon className="muidocs-icon-custom-github" />}
 			      Styles={buttonStyle}
 			    />
@@ -36,7 +37,7 @@ class Transfer extends Component {
 				<RaisedButton
 				  target="_blank"
 			      label="Confirm"
-			      secondary={true}
+			      primary={true}
 			      icon={<FontIcon className="muidocs-icon-custom-github" />}
 			      Styles={buttonStyle}
 			    />
@@ -55,7 +56,7 @@ class Transfer extends Component {
 				    <RaisedButton
 					  target="_blank"
 				      label="QR Scan"
-				      secondary={true}
+				      primary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
 				      style={buttonStyle}
 				    />
