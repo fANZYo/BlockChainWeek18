@@ -75,11 +75,11 @@
         takepicture();
         video.style.display = 'none';
         // hide the lorem ipsum text
-        canvas.style.display = 'block';
+        canvas.style.display = null;
         shouldDisplayVideo = false;
       } else {
         shouldDisplayVideo = true;
-        video.style.display = 'block';
+        video.style.display = null;
         // hide the lorem ipsum text
         canvas.style.display = 'none';
       }
