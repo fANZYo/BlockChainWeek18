@@ -47,6 +47,11 @@ table {
 	border-spacing: 0;
 }
 
+.deposit-dialog h3 {
+	text-align: center;
+	margin-bottom:2em !important;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 }
@@ -55,6 +60,23 @@ body {
 	border: 1px solid#000;
 }
 
-.rows .row {
-	display: inline-block;
+
+
+.half-left {
+	width: 50%; 
+	float:left;
+	text-align: center;
+	margin-bottom: 2em !important;
+}
+
+.half-right {
+	width: 50%; 
+	float:right;
+	text-align: center;
+	margin-bottom: 2em !important;
+}
+
+.half-left .material-icons,
+.half-right .material-icons {
+	margin-bottom: 1em;
 }
