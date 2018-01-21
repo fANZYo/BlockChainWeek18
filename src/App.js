@@ -90,13 +90,14 @@ class App extends Component {
             <div>
               <div>
                   <Paper style={style} zDepth={1}>
-                    <div className="total">950.00 Kina</div>
+                    <p className="total">950.00 Kina</p>
                   </Paper>
-                  <RaisedButton label="Deposit" primary={true} style={buttonStyle} />
+                  <RaisedButton backgroundColor="#a4c639" label="Deposit" style={buttonStyle} backgroundColor="#81C784" />
                 </div>
                 <div>
-                  <RaisedButton label="Payment Transfer" primary={true} style={buttonStyle} />
-                  <RaisedButton label="Withdraw" primary={true} style={buttonStyle} />
+                  
+                  <RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#80DEEA" />
+                  <RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#E57373" />
                 </div>
             </div>
             <div className="right-side"></div>
