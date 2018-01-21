@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import BankContract from '../build/contracts/Bank.json'
 import getWeb3 from './utils/getWeb3'
+import AppBar from 'material-ui/AppBar'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
 
 class App extends Component {
 	constructor(props) {
@@ -70,10 +74,43 @@ class App extends Component {
 	};
 
 	render() {
+		const style = {
+			height: 250,
+			width: 250,
+			margin: 20,
+			textAlign: 'center',
+			display: 'inline-block',
+			verticalAlign: 'top',
+			paddingTop: 20,
+		};
+
+		const buttonStyle = {
+			width: 250,
+			height: 250,
+			margin: 20,
+		}
+
+
 		return (
-			<h1 onClick={() => {this.transfer(3, this.state.accounts[0], this.state.accounts[1])}}>Hello world</h1>
+			<MuiThemeProvider>
+				<div>
+					<AppBar title="Status: Access Allowed / Denied" />
+					<div>
+						<div>
+							<Paper style={style} zDepth={1}>
+								<p className="total">950.00 Kina</p>
+							</Paper>
+							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#81C784" />
+						</div>
+						<div>
+							<RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#80DEEA" />
+							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#E57373" />
+						</div>
+					</div>
+					<div className="right-side"></div>
+				</div>
+			</MuiThemeProvider>
 		);
 	}
 }
-
 export default App
