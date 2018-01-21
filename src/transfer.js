@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import TextField from 'material-ui/TextField';
+import {List, ListItem} from 'material-ui/List';
 import '../scripts/capture'
 // Styles
 import './index.css'
@@ -39,8 +40,8 @@ class Transfer extends Component {
 
 	render() {
 		return (
-			<div>
-				<div >
+			<List>
+				<ListItem >
 					<TextField
 						hintText="Insert received account"
 						floatingLabelText="Send to"
@@ -51,8 +52,8 @@ class Transfer extends Component {
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
 				    />
-				</div>
-				<div >
+				</ListItem>
+				<ListItem >
 					<TextField
 						hintText="insert amount"
 						floatingLabelText="Amount"
@@ -81,12 +82,12 @@ class Transfer extends Component {
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
 				    />
-				</div>
-				<div style={{display:'inline-block'}}>
-					<h2>Digital Signature: </h2>
+				</ListItem>
+				<ListItem
+				>
 					{this.displayTransfer()}
-				</div>
-			</div>
+				</ListItem>
+			</List>
 		);
 	}
 }
