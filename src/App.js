@@ -5,6 +5,7 @@ import AppBar from 'material-ui/AppBar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
+import Dialog from 'material-ui/Dialog'
 
 class App extends Component {
 	constructor(props) {
@@ -13,7 +14,8 @@ class App extends Component {
 		this.state = {
 			storageValue: 0,
 			web3: null,
-			bank: null,
+      bank: null,
+      showTransferDialog: false,
 		}
 	}
 
@@ -71,7 +73,11 @@ class App extends Component {
 
 	balance = (from = this.state.accounts[1]) => {
 		this.state.bank.Balance.call({from}).then((res) => console.log(res))
-	};
+  };
+  
+  handleTransfer = () => {
+    this.setState({showTransferDialog: true});
+  };
 
 	render() {
 		const style = {
@@ -88,9 +94,8 @@ class App extends Component {
 			width: 250,
 			height: 250,
 			margin: 20,
-		}
-
-
+    };
+    
 		return (
 			<MuiThemeProvider>
 				<div>
@@ -100,11 +105,23 @@ class App extends Component {
 							<Paper style={style} zDepth={1}>
 								<p className="total">950.00 Kina</p>
 							</Paper>
-							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#81C784" />
+							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#FFFFFF" labelColor="#673AB7" />
 						</div>
 						<div>
-							<RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#80DEEA" />
-							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#E57373" />
+							<RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#FFFFFF" labelColor="#E91E63" onClick={this.handleTransfer} />
+              {this.state.showTransferDialog &&
+                <div>
+                  <Dialog
+                    title="Dialog With Actions"
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                  The actions in this window were passed in as an array of React objects.
+                </Dialog>
+              </div>
+              }
+							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#FFFFFF" labelColor="#009688" />
 						</div>
 					</div>
 					<div className="right-side"></div>
@@ -114,3 +131,5 @@ class App extends Component {
 	}
 }
 export default App
+
+
