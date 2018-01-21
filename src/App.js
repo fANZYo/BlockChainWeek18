@@ -78,21 +78,32 @@ class App extends Component {
 		})
 	};
 
-	balance = (from = this.state.accounts[1]) => {
-		this.state.bank.Balance.call({from}).then((res) => console.log(res))
+	balance = (from = this.state.accounts[0]) => {
+		this.state.bank.Balance.call({from}).then((res) => {
+			this.setState({balance: res.c[0]})
+		});
 	};
 
 	handleTransfer = () => {
 		this.setState({showTransferDialog: true});
 	};
 
-	handleClose = () => {
+	handleClose = (event) => {
+		this.setState({showTransferDialog: false});
+	};
+
+	handleTransferSubmit = (event) => {
+		this.transfer(this.state.transferAmount, this.state.accounts[0], this.state.accounts[this.state.transferWhoValue])
 		this.setState({showTransferDialog: false});
 	};
 
 	handleWhoChange = (event, index, value) => {
 		this.setState({transferWhoValue: value})
 	};
+
+	handleTransferAmountChange = (event, value) => {
+		this.setState({transferAmount: value})
+	}
 
 	render() {
 		const style = {
@@ -121,7 +132,7 @@ class App extends Component {
 				label="Submit"
 				primary={true}
 				keyboardFocused={true}
-				onClick={this.handleClose}
+				onClick={this.handleTransferSubmit}
 			/>,
 		];
 
@@ -132,7 +143,8 @@ class App extends Component {
 					<div>
 						<div>
 							<Paper style={style} zDepth={1}>
-								<p className="total">950.00 Kina</p>
+								<p className="total">{this.state.balance/10000} Ether</p>
+								<p className="total">{(this.state.balance/10000 * 1098.14 * 3.25).toFixed(2)} Kina</p>
 							</Paper>
 							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#673AB7" labelColor="#FFF"  />
 						</div>
@@ -150,13 +162,11 @@ class App extends Component {
 									value={this.state.transferWhoValue}
 									onChange={this.handleWhoChange}
 								>
-									<MenuItem value={1} primaryText="Never" />
-									<MenuItem value={2} primaryText="Every Night" />
-									<MenuItem value={3} primaryText="Weeknights" />
-									<MenuItem value={4} primaryText="Weekends" />
-									<MenuItem value={5} primaryText="Weekly" />
+									<MenuItem value={1} primaryText="Villager1" />
+									<MenuItem value={2} primaryText="Villager2" />
+									<MenuItem value={3} primaryText="Villager3" />
 								</SelectField>
-								<TextField hintText="Amount" type="number" />
+								<TextField floatingLabelText="Amount" type="number" onChange={this.handleTransferAmountChange} />
 							</Dialog>
 							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#009688" labelColor="#FFFFFF" />
 						</div>
