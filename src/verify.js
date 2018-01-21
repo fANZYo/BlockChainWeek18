@@ -65,7 +65,7 @@ class Verify extends Component {
 	render() {
 		return (
 			<div>
-				<div>
+				<div style={{marginBottom: '5em'}}>
 					{this.displayMainSpace()}
 					{this.displayButton()}
 				</div>
