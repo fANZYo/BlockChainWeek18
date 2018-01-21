@@ -118,7 +118,7 @@ class App extends Component {
 
 	handleTransferAmountChange = (event, value) => {
 		this.setState({transferAmount: value})
-  }
+	}
 
 	render() {
 		const balanceStyle = {
@@ -155,9 +155,9 @@ class App extends Component {
 				keyboardFocused={true}
 				onClick={this.handleTransferSubmit}
 			/>,
-    ];
-    
-    const actionsDeposit = [
+		];
+
+		const actionsDeposit = [
 			<FlatButton
 				label="Cancel"
 				primary={true}
@@ -183,7 +183,7 @@ class App extends Component {
 									<p className="total" style={balanceStyle}>{(this.state.balance/10000 * 1098.14 * 3.25).toFixed(2)} Kina</p>
 								</div>
 							</Paper>
-							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#673AB7" labelColor="#FFF" onClick={this.handleDeposit} />
+							<RaisedButton label="Deposit" style={buttonStyle} labelStyle={{fontSize: '1.375em'}} backgroundColor="#673AB7" labelColor="#FFF" onClick={this.handleDeposit} />
 							<Dialog
 								className="deposit-dialog"
 								title="Deposit Funds"
@@ -192,30 +192,31 @@ class App extends Component {
 								onRequestClose={this.handleCloseDeposit}
 								actions={actionsDeposit}
 							>
-                <div className="half-left">
-                  <div>
-                    <FontIcon className="material-icons">monetization_on</FontIcon>
-                  </div>
-                  <RaisedButton
-                    label="Deposit Cash"
-                    secondary={true}
-                    onClick={this.handleCloseDeposit}
-                  />
-                </div>
-                <div className="half-right">
-                  <div>
-                    <FontIcon className="material-icons">settings_input_component</FontIcon>
-                  </div>
-                  <RaisedButton
-                    label="Deposit Charge"
-                    secondary={true}
-                    onClick={this.handleCloseDeposit}
-                  />
-                </div>
+								<div className="half-left">
+									<div>
+										<FontIcon className="material-icons">monetization_on</FontIcon>
+									</div>
+									<RaisedButton
+
+										label="Deposit Cash"
+										secondary={true}
+										onClick={this.handleCloseDeposit}
+									/>
+								</div>
+								<div className="half-right">
+									<div>
+										<FontIcon className="material-icons">settings_input_component</FontIcon>
+									</div>
+									<RaisedButton
+										label="Deposit Charge"
+										secondary={true}
+										onClick={this.handleCloseDeposit}
+									/>
+								</div>
 							</Dialog>
 						</div>
 						<div>
-							<RaisedButton label="Payment Transfer" style={buttonStyle} backgroundColor="#E91E63" labelColor="#fff" onClick={this.handleTransfer} />
+							<RaisedButton label="Payment Transfer" style={buttonStyle} labelStyle={{fontSize: "1.375em"}} backgroundColor="#E91E63" labelColor="#fff" onClick={this.handleTransfer} />
 							<Dialog
 								title="Dialog With Actions"
 								modal={false}
@@ -238,7 +239,7 @@ class App extends Component {
 									<TextField floatingLabelText="Amount" type="number" onChange={this.handleTransferAmountChange} />
 								</div>
 							</Dialog>
-							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#009688" labelColor="#FFFFFF" />
+							<RaisedButton label="Withdraw" style={buttonStyle} labelStyle={{fontSize: "1.375em"}} backgroundColor="#009688" labelColor="#FFFFFF" />
 						</div>
 					</div>
 					<div className="half-right right-side"><Verify /></div>
