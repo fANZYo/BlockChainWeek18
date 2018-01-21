@@ -116,7 +116,7 @@ class App extends Component {
 
 	handleTransferAmountChange = (event, value) => {
 		this.setState({transferAmount: value})
-	}
+  }
 
 	render() {
 		const style = {
@@ -147,6 +147,20 @@ class App extends Component {
 				keyboardFocused={true}
 				onClick={this.handleTransferSubmit}
 			/>,
+    ];
+    
+    const actionsDeposit = [
+			<FlatButton
+				label="Cancel"
+				primary={true}
+				onClick={this.handleCloseDeposit}
+			/>,
+			<FlatButton
+				label="Submit"
+				primary={true}
+				keyboardFocused={true}
+				onClick={this.handleTransferSubmit}
+			/>,
 		];
 
 		return (
@@ -166,7 +180,7 @@ class App extends Component {
 								modal={false}
 								open={this.state.showDepositDialog}
 								onRequestClose={this.handleCloseDeposit}
-								actions={actions}
+								actions={actionsDeposit}
 							>
                 <div className="half-left">
                   <div>
@@ -175,6 +189,7 @@ class App extends Component {
                   <RaisedButton
                     label="Deposit Cash"
                     secondary={true}
+                    onClick={this.handleCloseDeposit}
                   />
                 </div>
                 <div className="half-right">
@@ -184,6 +199,7 @@ class App extends Component {
                   <RaisedButton
                     label="Deposit Charge"
                     secondary={true}
+                    onClick={this.handleCloseDeposit}
                   />
                 </div>
 							</Dialog>
