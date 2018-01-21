@@ -26,8 +26,10 @@ class App extends Component {
 			web3: null,
 			bank: null,
 			showTransferDialog: false,
-      transferWhoValue: 0,
-      showDepositDialog: false,
+			transferWhoValue: 0,
+			showDepositDialog: false,
+			accounts: ['0xEeE6D50b733Dad509A05c27c9292eB7940FF6968'],
+			balance: 999200
 		}
 	}
 
@@ -104,21 +106,27 @@ class App extends Component {
 
 	handleWhoChange = (event, index, value) => {
 		this.setState({transferWhoValue: value})
-  };
-  
-  handleDeposit = () => {
-    this.setState({showDepositDialog: true});
-  };
+	};
 
-  handleCloseDeposit = () => {
-    this.setState({showDepositDialog: false});
-  };
+	handleDeposit = () => {
+		this.setState({showDepositDialog: true});
+	};
+
+	handleCloseDeposit = () => {
+		this.setState({showDepositDialog: false});
+	};
 
 	handleTransferAmountChange = (event, value) => {
 		this.setState({transferAmount: value})
   }
 
 	render() {
+		const balanceStyle = {
+			fontSize: '2em',
+			fontWeight: 'bold'
+
+		}
+
 		const style = {
 			height: 250,
 			width: 250,
@@ -170,12 +178,14 @@ class App extends Component {
 					<div className="half-left">
 						<div>
 							<Paper style={style} zDepth={1}>
-								<p className="total">{this.state.balance/10000} Ether</p>
-								<p className="total">{(this.state.balance/10000 * 1098.14 * 3.25).toFixed(2)} Kina</p>
+								<div style={{paddingTop: '4em'}}>
+									<p className="total" style={balanceStyle}>{this.state.balance/10000} Ether</p>
+									<p className="total" style={balanceStyle}>{(this.state.balance/10000 * 1098.14 * 3.25).toFixed(2)} Kina</p>
+								</div>
 							</Paper>
 							<RaisedButton label="Deposit" style={buttonStyle} backgroundColor="#673AB7" labelColor="#FFF" onClick={this.handleDeposit} />
-              <Dialog
-                className="deposit-dialog"
+							<Dialog
+								className="deposit-dialog"
 								title="Deposit Funds"
 								modal={false}
 								open={this.state.showDepositDialog}
@@ -213,16 +223,20 @@ class App extends Component {
 								onRequestClose={this.handleClose}
 								actions={actions}
 							>
-								<SelectField
-									floatingLabelText="Frequency"
-									value={this.state.transferWhoValue}
-									onChange={this.handleWhoChange}
-								>
-									<MenuItem value={1} primaryText="Villager1" />
-									<MenuItem value={2} primaryText="Villager2" />
-									<MenuItem value={3} primaryText="Villager3" />
-								</SelectField>
-								<TextField floatingLabelText="Amount" type="number" onChange={this.handleTransferAmountChange} />
+								<div>
+									<SelectField
+										floatingLabelText="Frequency"
+										value={this.state.transferWhoValue}
+										onChange={this.handleWhoChange}
+									>
+										<MenuItem value={1} primaryText="Villager1" />
+										<MenuItem value={2} primaryText="Villager2" />
+										<MenuItem value={3} primaryText="Villager3" />
+									</SelectField>
+								</div>
+								<div>
+									<TextField floatingLabelText="Amount" type="number" onChange={this.handleTransferAmountChange} />
+								</div>
 							</Dialog>
 							<RaisedButton label="Withdraw" style={buttonStyle} backgroundColor="#009688" labelColor="#FFFFFF" />
 						</div>
