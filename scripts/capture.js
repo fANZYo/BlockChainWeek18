@@ -20,6 +20,8 @@
   var startbutton = null;
 
   function startup() {
+    shouldDisplayVideo = true;
+    document.getElementById('canvas').style.display = 'none';
     video = document.getElementById('video');
     canvas = document.getElementById('canvas');
     photo = document.getElementById('photo');
@@ -69,8 +71,18 @@
     }, false);
 
     startbutton.addEventListener('click', function(ev){
-      takepicture();
-      ev.preventDefault();
+      if(shouldDisplayVideo) {
+        takepicture();
+        video.style.display = 'none';
+        // hide the lorem ipsum text
+        canvas.style.display = 'block';
+        shouldDisplayVideo = false;
+      } else {
+        shouldDisplayVideo = true;
+        video.style.display = 'block';
+        // hide the lorem ipsum text
+        canvas.style.display = 'none';
+      }
     }, false);
     
     clearphoto();
@@ -102,7 +114,7 @@
       context.drawImage(video, 0, 0, width, height);
     
       var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
+      // photo.setAttribute('src', data);
     } else {
       clearphoto();
     }
