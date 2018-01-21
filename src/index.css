@@ -56,12 +56,6 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-.right-side {
-	border: 1px solid#000;
-}
-
-
-
 .half-left {
 	width: 50%; 
 	float:left;
@@ -70,7 +64,7 @@ body {
 }
 
 .half-right {
-	width: 50%; 
+	width: 49%; 
 	float:right;
 	text-align: center;
 	margin-bottom: 2em !important;
@@ -80,3 +74,8 @@ body {
 .half-right .material-icons {
 	margin-bottom: 1em;
 }
+
+.right-side {
+	margin-top: 20px;
+}
+
