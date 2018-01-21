@@ -8,6 +8,10 @@ import '../scripts/capture'
 // Styles
 import './index.css'
 
+const buttonStyle = {
+  margin: 12,
+};
+
 class Transfer extends Component {
 	
 	componentWillMount() {
@@ -24,6 +28,7 @@ class Transfer extends Component {
 			      label="Verify"
 			      secondary={true}
 			      icon={<FontIcon className="muidocs-icon-custom-github" />}
+			      Styles={buttonStyle}
 			    />
 			);
 		} else {
@@ -33,6 +38,7 @@ class Transfer extends Component {
 			      label="Confirm"
 			      secondary={true}
 			      icon={<FontIcon className="muidocs-icon-custom-github" />}
+			      Styles={buttonStyle}
 			    />
 			);
 		}
@@ -51,6 +57,7 @@ class Transfer extends Component {
 				      label="QR Scan"
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
+				      style={buttonStyle}
 				    />
 				</ListItem>
 				<ListItem >
@@ -63,24 +70,28 @@ class Transfer extends Component {
 				      label="50"
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
+				      style={buttonStyle}
 				    />
 				    <RaisedButton
 					  target="_blank"
 				      label="100"
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
+				      style={buttonStyle}
 				    />
 				    <RaisedButton
 					  target="_blank"
 				      label="200"
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
+				      style={buttonStyle}
 				    />
 				    <RaisedButton
 					  target="_blank"
 				      label="1000"
 				      secondary={true}
 				      icon={<FontIcon className="muidocs-icon-custom-github" />}
+				      style={buttonStyle}
 				    />
 				</ListItem>
 				<ListItem
